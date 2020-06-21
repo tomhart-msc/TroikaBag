@@ -12,13 +12,13 @@ defmodule TroikaBag.EventListener do
     case cmd do
       "!fill" ->
         id = bag_id(msg)
-        {:ok, pid} = TroikaBag.BagSupervisor.bag(id)
-        TroikaBag.Bag.fill(pid, String.replace(msg.content, "!fill ", ""))
+        {:ok, _} = TroikaBag.BagSupervisor.bag(id)
+        TroikaBag.Bag.fill(id, String.replace(msg.content, "!fill ", ""))
         Api.create_message(msg.channel_id, "Bag has been filled!")
       "!next" ->
         id = bag_id(msg)
-        {:ok, pid} = TroikaBag.BagSupervisor.bag(id)
-        Api.create_message(msg.channel_id, TroikaBag.Bag.next(pid))
+        {:ok, _} = TroikaBag.BagSupervisor.bag(id)
+        Api.create_message(msg.channel_id, TroikaBag.Bag.next(id))
       _ -> :ignore
     end
   end
