@@ -21,6 +21,19 @@ TroikaBot> END OF ROUND
 
 TroikaBag creates one bag per channel on your server.
 
+TroikaBag also allows you to create named counters, which are useful in multiple games. Example:
+
+```
+Tom> !set refresh 10
+TroikaBot> 10
+Tom> !get refresh
+TroikaBot> 10
+Tom> !sub refresh 1
+TroikaBot> 9
+Tom> !add refresh 2
+TroikaBot> 11
+```
+
 ## Installation
 
 There is no public release of TroikaBot but you can run it on your Discord server by creating an application and bot, and telling TroikaBot your bot token. Add it to `config/config.exs`

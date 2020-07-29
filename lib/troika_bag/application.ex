@@ -10,7 +10,9 @@ defmodule TroikaBag.Application do
     children = [
       {TroikaBag.EventListener, []},
       {Registry, keys: :unique, name: :bag_process_registry},
-      {DynamicSupervisor, strategy: :one_for_one, name: TroikaBag.BagSupervisor}
+      {Registry, keys: :unique, name: :counter_process_registry},
+      {DynamicSupervisor, strategy: :one_for_one, name: TroikaBag.BagSupervisor},
+      {DynamicSupervisor, strategy: :one_for_one, name: TroikaBag.Counter.CounterSupervisor}
       # Starts a worker by calling: TroikaBag.Worker.start_link(arg)
       # {TroikaBag.Worker, arg},
     ]
